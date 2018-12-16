@@ -16,6 +16,12 @@ public class DataReader {
 		this.scanner.close();
 	}
 	
+	public int getInt() {
+		int number = scanner.nextInt();
+		scanner.nextLine();
+		return number;
+	}
+	
 	public Book readAndCreateBook() {
 		System.out.println("Tytu³:");
 		String tempTitle = scanner.nextLine();
