@@ -3,6 +3,7 @@ package mac.bry.utils;
 import java.util.Scanner;
 
 import mac.bry.data.Book;
+import mac.bry.data.Magazine;
 
 public class DataReader {
 
@@ -39,5 +40,25 @@ public class DataReader {
 		String tempISBN = scanner.nextLine();
 		
 		return new Book(tempTitle,tempAuthor,tempReleaseDate,tempPages,tempPublisher, tempISBN);
+	}
+	
+	public Magazine readAndCreateMagazine() {
+		System.out.println("Tytu³:");
+		String tempTitle = scanner.nextLine();
+		System.out.println("Wydawnictwo");
+		String tempPublisher = scanner.nextLine();
+		System.out.println("Rok wydania:");
+		int tempReleaseDate = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println("Miesi¹c wydania:");
+		int tempMonth = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println("Dzieñ wydania:");
+		int tempDay = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println("Jêzyk:");
+		String tempLanguage = scanner.nextLine();
+
+		return new Magazine(tempReleaseDate,tempTitle, tempPublisher,tempMonth,tempDay,tempLanguage);
 	}
 }

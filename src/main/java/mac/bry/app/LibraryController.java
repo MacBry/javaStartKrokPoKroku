@@ -2,13 +2,16 @@ package mac.bry.app;
 
 import mac.bry.data.Book;
 import mac.bry.data.Library;
+import mac.bry.data.Magazine;
 import mac.bry.utils.DataReader;
 
 public class LibraryController {
 	
-	public final int exit = 0;
-	public final int addBook = 1;
-	public final int showBooks = 2;
+	public static final int EXIT = 0;
+	public static final int ADD_BOOK = 1;
+	public static final int SHOW_BOOKS = 2;
+	public static final int ADD_MAGAZINE = 3;
+	public static final int SHOW_MAGAZINE = 4;
 	
 	private DataReader dataReader;
 	private Library library;
@@ -21,13 +24,19 @@ public class LibraryController {
 	public void controlLoop () {
 		int option = -1;
 		showOptions();
-		while ((option = dataReader.getInt()) != exit) {
+		while ((option = dataReader.getInt()) != EXIT) {
 			switch (option) {
-			case addBook:
+			case ADD_BOOK:
 				addBook();
 				break;
-			case showBooks:
+			case SHOW_BOOKS:
 				showBooks();
+				break;
+			case ADD_MAGAZINE:
+				addMagazine();
+				break;
+			case SHOW_MAGAZINE:
+				showMagazines();
 				break;
 
 			default:
@@ -40,8 +49,10 @@ public class LibraryController {
 	
 	private void showOptions () {
 		System.out.println("Wybierz opcje");
-		System.out.println("1. Doda Ksi¹¿kê");
+		System.out.println("1. Dodaj Ksi¹¿kê");
 		System.out.println("2. Poka¿ Ksi¹¿ki");
+		System.out.println("3. Dodaj Magazyn");
+		System.out.println("4. Poka¿ Magazyny");
 		System.out.println("0. Wyjœcie");
 	}
 	
@@ -51,5 +62,14 @@ public class LibraryController {
 	}
 	private void showBooks() {
 		library.printBooks();
+	}
+	
+	private void addMagazine() {
+		Magazine magazine = dataReader.readAndCreateMagazine();
+		library.addMagazines(magazine);
+	}
+	
+	private void showMagazines() {
+		library.printMagazines();
 	}
 }
