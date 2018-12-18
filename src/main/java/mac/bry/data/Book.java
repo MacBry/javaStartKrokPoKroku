@@ -12,12 +12,9 @@ public class Book extends Publication {
 	
 	
 	public Book(String title, String author, int releaseDate, int pages, String publisher, String isbn) {
-		//super();
-		this.setTitle(title);
-		this.author = author;
-		this.setYear(releaseDate);  
+		super(releaseDate,title,publisher);
+		this.author = author; 
 		this.pages = pages;
-		this.setPublisher(publisher);
 		this.isbn = isbn;
 	}
 	
